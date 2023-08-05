@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "LoadBalancer.Server": {
+      "commandName": "Executable",
+      "executablePath": "$(TargetDir)gcs.exe",
+      "commandLineArgs": "-c 1 -C $(TargetDir)\\config.json",
+      "workingDirectory": "$(TargetDir)",
+      "nativeDebugging": false
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "comment": "LoadBalancer configuration",
+
+  "adapters": [
+    {
+      "comment": "Nethost adapter",
+      "type": "$adapter$",
+      "dir": "$dir$",
+      "name": "GC.Runtime",
+      "apps": [
+        {
+          "name": "test",
+          "type_name": "LoadBalancer.Server.Test.TestService",
+          "file_name": "LoadBalancer.Server",
+          "conn_notice": {
+            "msg_per_second": 200,
+            "output_queue_size": 10
+          },
+          "conn_critical": {
+            "msg_per_second": 200,
+            "output_queue_size": 20
+          }
+        },
+        {
+          "name": "test1",
+          "type_name": "LoadBalancer.Server.Test.TestService",
+          "file_name": "LoadBalancer.Server",
+          "conn_notice": {
+            "msg_per_second": 200,
+            "output_queue_size": 10
+          },
+          "conn_critical": {
+            "msg_per_second": 200,
+            "output_queue_size": 20
+          }
+        }
+      ]
+    }
+  ],
+
+  "vhosts": [
+    {
+      "comment": "test",
+      "ip": "0.0.0.0",
+      "port": 7777,
+      "protocol": "wss",
+      "app": "test"
+    },
+    {
+      "comment": "test",
+      "ip": "0.0.0.0",
+      "port": 7778,
+      "protocol": "wss",
+      "app": "test1"
+    }
+  ],
+
+  "logging": {
+    "comment": "%p means PID",
+    "log_file": "$dir$log_test.log",
+    "level": "VERBOSE"
+  },
+
+  "keep_alive": {
+    "comment": "zero timeout means no keep alive",
+    "timeout": 0,
+    "retries": 5,
+    "interval": 100
+  },
+
+  "threading": {
+    "worker_count": 3,
+    "use_libuv": false
+  },
+
+  "counters": {
+    "per_second_window": 60,
+    "update_interval": 1,
+    "comment": "counters section"
+  },
+
+  "group_max_size": 42,
+  "max_groups": 1000,
+  "max_client_connections": 99
+}

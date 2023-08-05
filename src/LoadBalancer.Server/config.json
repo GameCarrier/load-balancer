@@ -1,0 +1,165 @@
+{
+  "comment": "LoadBalancer configuration",
+
+  "adapters": [
+    {
+      "comment": "Nethost adapter",
+      "type": "$adapter$",
+      "dir": "$dir$",
+      "name": "GC.Runtime",
+      "apps": [
+        {
+          "name": "auth",
+          "type_name": "LoadBalancer.Server.Auth.AuthService",
+          "file_name": "LoadBalancer.Server"
+        },
+        {
+          "name": "auth1",
+          "type_name": "LoadBalancer.Server.Auth.AuthService",
+          "file_name": "LoadBalancer.Server"
+        },
+        {
+          "name": "auth2",
+          "type_name": "LoadBalancer.Server.Auth.AuthService",
+          "file_name": "LoadBalancer.Server"
+        },
+        {
+          "name": "jumpNorthAmerica",
+          "type_name": "LoadBalancer.Server.Jump.JumpService",
+          "file_name": "LoadBalancer.Server"
+        },
+        {
+          "name": "jumpEurope",
+          "type_name": "LoadBalancer.Server.Jump.JumpService",
+          "file_name": "LoadBalancer.Server"
+        },
+        {
+          "name": "gameNorthAmerica",
+          "type_name": "LoadBalancer.Server.Game.GameService",
+          "file_name": "LoadBalancer.Server",
+          "conn_notice": {
+            "msg_per_second": 200,
+            "output_queue_size": 200
+          },
+          "conn_critical": {
+            "msg_per_second": 200,
+            "output_queue_size": 200
+          }
+        },
+        {
+          "name": "gameEurope",
+          "type_name": "LoadBalancer.Server.Game.GameService",
+          "file_name": "LoadBalancer.Server",
+          "conn_notice": {
+            "msg_per_second": 200,
+            "output_queue_size": 200
+          },
+          "conn_critical": {
+            "msg_per_second": 200,
+            "output_queue_size": 200
+          }
+        },
+        {
+          "name": "test",
+          "type_name": "LoadBalancer.Server.Test.TestService",
+          "file_name": "LoadBalancer.Server",
+          "conn_notice": {
+            "msg_per_second": 200,
+            "output_queue_size": 200
+          },
+          "conn_critical": {
+            "msg_per_second": 200,
+            "output_queue_size": 200
+          }
+        }
+      ]
+    }
+  ],
+
+  "vhosts": [
+    {
+      "comment": "auth",
+      "ip": "0.0.0.0",
+      "port": 7700,
+      "protocol": "wss",
+      "app": "auth"
+    },
+    {
+      "comment": "auth1",
+      "ip": "0.0.0.0",
+      "port": 7701,
+      "protocol": "wss",
+      "app": "auth1"
+    },
+    {
+      "comment": "auth2",
+      "ip": "0.0.0.0",
+      "port": 7702,
+      "protocol": "wss",
+      "app": "auth2"
+    },
+    {
+      "comment": "jumpNorthAmerica",
+      "ip": "0.0.0.0",
+      "port": 7711,
+      "protocol": "wss",
+      "app": "jumpNorthAmerica"
+    },
+    {
+      "comment": "jumpEurope",
+      "ip": "0.0.0.0",
+      "port": 7712,
+      "protocol": "wss",
+      "app": "jumpEurope"
+    },
+    {
+      "comment": "gameNorthAmerica",
+      "ip": "0.0.0.0",
+      "port": 7731,
+      "protocol": "wss",
+      "app": "gameNorthAmerica"
+    },
+    {
+      "comment": "gameEurope",
+      "ip": "0.0.0.0",
+      "port": 7732,
+      "protocol": "wss",
+      "app": "gameEurope"
+    },
+    {
+      "comment": "test",
+      "ip": "0.0.0.0",
+      "port": 7777,
+      "protocol": "wss",
+      "app": "test"
+    }
+  ],
+
+  "logging": {
+    "comment": "%p means PID",
+    "log_file": "$dir$log_allInOne.log",
+    "level": 0
+  },
+
+  "keep_alive": {
+    "comment": "zero timeout means no keep alive",
+    "timeout": 0,
+    "retries": 5,
+    "interval": 100
+  },
+
+  "threading": {
+    "worker_count": 3,
+    "use_libuv": false
+  },
+
+  "counters": {
+    "per_second_window": 60,
+    "update_interval": 1,
+    "comment": "counters section"
+  },
+
+  "group_max_size": 42,
+  "max_groups": 1000,
+  "max_client_connections": 99
+}

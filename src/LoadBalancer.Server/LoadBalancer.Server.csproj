@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <InstallationDir>C:\Program Files (x86)\Game Carrier</InstallationDir>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--<DefineConstants>$(DefineConstants);USE_GC_LOGGING</DefineConstants>-->
+  </PropertyGroup>  
+  
+  <ItemGroup>
+    <Compile Include="..\LoadBalancer.Client\Common\ClientCallContext.cs" Link="Client\ClientCallContext.cs" />
+    <Compile Include="..\LoadBalancer.Client\Common\IServiceConnect.cs" Link="Client\IServiceConnect.cs" />
+    <Compile Include="..\LoadBalancer.Client\Common\ServiceClientBase.cs" Link="Client\ServiceClientBase.cs" />
+    <Compile Include="..\LoadBalancer.Client\Common\ServiceConnect.cs" Link="Client\ServiceConnect.cs" />
+    <Compile Include="..\LoadBalancer.Client\Common\ServiceFactoryExtensions.cs" Link="Client\ServiceFactoryExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LoadBalancer\LoadBalancer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GC.Common">
+      <HintPath>$(InstallationDir)\Bin\$(TargetFramework)\GC.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GC.Adapter">
+      <HintPath>$(InstallationDir)\Bin\$(TargetFramework)\GC.Adapter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="settings_*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="DeployServer" AfterTargets="PostBuildEvent">
+    <Copy SourceFiles="$(InstallationDir)\Bin\gcs.exe" DestinationFolder="$(TargetDir)" />
+    <Copy SourceFiles="$(InstallationDir)\Bin\$(TargetFramework)\GC.Runtime.dll" DestinationFolder="$(TargetDir)" />
+    <Copy SourceFiles="$(InstallationDir)\Bin\$(TargetFramework)\GC.Runtime.runtimeconfig.json" DestinationFolder="$(TargetDir)" Condition="'$(TargetFramework)' != 'net472'" />
+  </Target>
+
+  <ItemGroup>
+    <GcConfigFiles Include="$(ProjectDir)\config*.json" />
+  </ItemGroup>
+
+  <Target Name="PrepareConfig" AfterTargets="PostBuildEvent">
+    <PropertyGroup>
+      <EscapedTargetDir>$(TargetDir.Replace('\', '\\'))</EscapedTargetDir>
+      <AdapterType Condition="'$(TargetFramework)' == 'net472'">native</AdapterType>
+      <AdapterType Condition="'$(TargetFramework)' != 'net472'">nethost</AdapterType>
+    </PropertyGroup>
+
+    <Message Text="Prepare GC config: %(GcConfigFiles.FullPath)" Importance="high" />
+    <WriteLinesToFile Lines="$([System.IO.File]::ReadAllText(%(GcConfigFiles.FullPath)).Replace('$dir$','$(EscapedTargetDir)').Replace('$adapter$','$(AdapterType)'))" File="$(TargetDir)%(GcConfigFiles.FileName).json" Overwrite="true" />
+  </Target>
+
+</Project>

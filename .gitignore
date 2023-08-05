@@ -1,0 +1,15 @@
+.vs
+.vsconfig
+*.suo
+bin
+obj
+TestResults
+UnityFPS/[Ll]ibrary/
+UnityFPS/[Tt]emp/
+UnityFPS/[Oo]bj/
+UnityFPS/[Bb]uild/
+UnityFPS/[Bb]uilds/
+UnityFPS/[Ll]ogs/
+UnityFPS/[Uu]ser[Ss]ettings/
+UnityFPS/Assets/Scripts/libs/
+UnityFPS/Assets/Scripts/libs.meta

@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoadBalancer", "LoadBalancer\LoadBalancer.csproj", "{7A5BFC74-27DB-45EA-8FC6-A4564A06F7C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoadBalancer.Server", "LoadBalancer.Server\LoadBalancer.Server.csproj", "{7DD2C854-D73E-4FF7-8877-B0A407EC2A3C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoadBalancer.Tests", "LoadBalancer.Tests\LoadBalancer.Tests.csproj", "{5BC11A2A-4AD0-4793-90CB-9EDF04D16DCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoadBalancer.Client", "LoadBalancer.Client\LoadBalancer.Client.csproj", "{8C2D7E79-61BD-43E3-8751-94FF6B90A4DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoadBalancer.Server.Tests", "LoadBalancer.Server.Tests\LoadBalancer.Server.Tests.csproj", "{F74B5109-0841-4D69-9FB8-E090826EEE9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{917C54FF-4B87-4A54-AD49-D746DF8C0F82}"
+	ProjectSection(SolutionItems) = preProject
+		cmd\CopyClientToUnityFPS.cmd = cmd\CopyClientToUnityFPS.cmd
+		cmd\RunAllInIsolatedProcesses.cmd = cmd\RunAllInIsolatedProcesses.cmd
+		cmd\RunAllInOne.cmd = cmd\RunAllInOne.cmd
+		cmd\RunAuth.cmd = cmd\RunAuth.cmd
+		cmd\RunAuth1.cmd = cmd\RunAuth1.cmd
+		cmd\RunAuth2.cmd = cmd\RunAuth2.cmd
+		cmd\RunGameEurope.cmd = cmd\RunGameEurope.cmd
+		cmd\RunGameNorthAmerica.cmd = cmd\RunGameNorthAmerica.cmd
+		cmd\RunJumpEurope.cmd = cmd\RunJumpEurope.cmd
+		cmd\RunJumpNorthAmerica.cmd = cmd\RunJumpNorthAmerica.cmd
+		cmd\RunTest.cmd = cmd\RunTest.cmd
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A5BFC74-27DB-45EA-8FC6-A4564A06F7C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5BFC74-27DB-45EA-8FC6-A4564A06F7C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5BFC74-27DB-45EA-8FC6-A4564A06F7C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5BFC74-27DB-45EA-8FC6-A4564A06F7C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DD2C854-D73E-4FF7-8877-B0A407EC2A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD2C854-D73E-4FF7-8877-B0A407EC2A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD2C854-D73E-4FF7-8877-B0A407EC2A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD2C854-D73E-4FF7-8877-B0A407EC2A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC11A2A-4AD0-4793-90CB-9EDF04D16DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC11A2A-4AD0-4793-90CB-9EDF04D16DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC11A2A-4AD0-4793-90CB-9EDF04D16DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC11A2A-4AD0-4793-90CB-9EDF04D16DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C2D7E79-61BD-43E3-8751-94FF6B90A4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C2D7E79-61BD-43E3-8751-94FF6B90A4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C2D7E79-61BD-43E3-8751-94FF6B90A4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C2D7E79-61BD-43E3-8751-94FF6B90A4DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F74B5109-0841-4D69-9FB8-E090826EEE9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F74B5109-0841-4D69-9FB8-E090826EEE9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F74B5109-0841-4D69-9FB8-E090826EEE9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F74B5109-0841-4D69-9FB8-E090826EEE9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2211448D-93A3-48A4-ADC8-73D2396B1625}
+	EndGlobalSection
+EndGlobal
